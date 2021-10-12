@@ -78,10 +78,11 @@ order by max_total_cases desc;
 
 --6. Find total_new_cases and total_death in the world
 select sum(new_cases) as total_cases,
-sum(cast(total_deaths as int)) as total_deaths,
-round((sum(new_cases)/sum(cast(total_deaths as int)))*100,2) as deaths_rate
+sum(cast(new_deaths as int)) as total_deaths,
+(sum(cast(new_deaths as int))/sum(new_cases))*100 as deaths_rate
 from CovidDeath
-where continent is not null;
+where continent is not null
+order by 1,2;
 
 --Combination with CovidVaccine
 --1. Get the total_vaccinations vs population in every locations by date
