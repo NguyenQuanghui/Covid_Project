@@ -45,15 +45,15 @@ GROUP BY location,population
 order by Covid_rate desc;
 
 --4. Find what location has highest total_cases
-Select location,max(cast(total_deaths as int)) as max_total_cases
+Select location,max(cast(total_cases as int)) as max_total_cases
 from CovidDeath
 where continent is not null
 group by location
 order by max_total_cases desc;
 
 
---5. Find what continent has highest death rate
-Select continent,max(cast(total_deaths as int)) as max_total_cases
+--5. Find what continent has highest total_cases
+Select continent,max(cast(total_cases as int)) as max_total_cases
 from CovidDeath
 where continent is not null
 group by continent
